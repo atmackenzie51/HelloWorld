@@ -6,7 +6,7 @@ const App = () => {
     <View style={styles.container}>
       <Text style={styles.blue}>Hello World!</Text>
       <Text style={styles.bigRed}>How are you?</Text>
-      <Text style={styles.bigRedBold}>I am feeling blue...</Text>
+      <Text style={[styles.blue, styles.bigRed]}>I am feeling blue...</Text>
     </View>
   );
 }
@@ -24,12 +24,7 @@ const styles = StyleSheet.create({
   },
   bigRed: {
     color: 'red',
-    fontSize: '30',
-  },
-  bigRedBold: {
-    color: 'red',
-    fontSize: '30',
-    fontWeight: '600',
+    fontSize: 30,
   },
 });
 
