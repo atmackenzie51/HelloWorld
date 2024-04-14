@@ -7,7 +7,11 @@ const App = () => {
       <Text style={styles.blue}>Hello World!</Text>
       <Text style={styles.bigRed}>How are you?</Text>
       <Text style={[styles.blue, styles.bigRed]}>I am feeling blue...</Text>
+      <View style={styles.box}>
+
+      </View>
     </View>
+
   );
 }
 
@@ -17,6 +21,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  box: {
+    width: 60,
+    height: 60,
+    backgroundColor: 'blue',
   },
   blue: {
     color: 'blue',
