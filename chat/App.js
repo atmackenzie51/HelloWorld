@@ -15,14 +15,18 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Text style={styles.blue}>Hello World!</Text>
-        <Text style={styles.bigRed}>How are you?</Text>
-        <Text style={[styles.blue, styles.bigRed]}>I am feeling blue...</Text>
-        <View style={styles.box}>
-
-        </View>
-      </View>
+      <Stack.Navigator
+        initialRouteName="Start"
+      >
+        <Stack.Screen
+          name="Start"
+          component={Start}
+        />
+        <Stack.Screen
+          name="Chat"
+          component={Chat}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
