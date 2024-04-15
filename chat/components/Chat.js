@@ -1,6 +1,13 @@
 import { StyleSheet, View, Text, Button } from 'react-native';
+import { useEffect } from 'react';
 
-const Chat = ({ navigation }) => {
+const Chat = ({ route, navigation }) => {
+  const { name } = route.params;
+
+  useEffect(() => {
+    navigation.setOptions({ title: name })
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text>Welcome to Chat</Text>

@@ -1,12 +1,21 @@
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Text, Button, TextInput } from 'react-native';
 
 const Start = ({ navigation }) => {
+  const [name, setName] = useState('');
+
   return (
     <View style={styles.container}>
       <Text>Hello!</Text>
+      <TextInput
+        style={styles.textInput}
+        value={name}
+        onChangeText={setName}
+        placeholder='Set your username here!'
+      />
       <Button
         title="Go to Chat Screen"
-        onPress={() => navigation.navigate('Chat')}
+        onPress={() => navigation.navigate('Chat', { name: name })}
       />
     </View>
   );
@@ -17,6 +26,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  textInput: {
+    width: "88%",
+    padding: 15,
+    borderWidth: 1,
+    marginTop: 15,
+    marginBottom: 15
   }
 });
 
