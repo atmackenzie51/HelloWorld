@@ -118,10 +118,12 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "88%",
+    height: 60,
     backgroundColor: '#757083',
     padding: 15,
     alignItems: 'center',
     borderRadius: 4,
+    justifyContent: "space-evenly"
   },
   buttonText: {
     fontSize: 16,
