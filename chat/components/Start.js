@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground } from 'react-native';
-import backgroundImage from '../img/background-image.png';
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -8,7 +7,7 @@ const Start = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={backgroundImage}
+        source={require('../img/background-image.png')}
         resizeMode="cover"
         style={styles.imageBackground}
       />
