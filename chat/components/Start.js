@@ -29,8 +29,8 @@ const Start = ({ navigation }) => {
           onChangeText={setName}
           placeholder='Your Name'
         />
-        <View style={styles.selectBackgroundContainer}>
-          <Text style={styles.selectBackgroundText}>Choose Background Color:</Text>
+        <View style={styles.selectColorContainer}>
+          <Text style={styles.selectColorText}>Choose Background Color:</Text>
         </View>
         <TouchableOpacity
           style={styles.button}
@@ -90,12 +90,18 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#FFFFFF",
   },
-  selectBackgroundText: {
+  selectColorContainer: {
+    width: '88%',
+    alignItems: 'left',
+    alignSelf: 'flex-start',
+    padding: 15
+  },
+  selectColorText: {
     fontSize: 16,
     fontWeight: "300",
     color: '#757083',
     opacity: 1.0,
-    textAlign: 'left',
+    alignItems: 'flex-start',
     marginBottom: 15
   }
 });
