@@ -13,6 +13,7 @@ import backgroundImage from '../assets/background-image.png';
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState('');
+  const [background, setBackground] = useState('');
 
   return (
 
@@ -29,15 +30,52 @@ const Start = ({ navigation }) => {
           onChangeText={setName}
           placeholder='Your Name'
         />
-        <View style={styles.selectColorContainer}>
-          <Text style={styles.selectColorText}>Choose Background Color:</Text>
+        <View style={styles.chooseBackgroundContainer}>
+          <Text style={styles.chooseBackgroundText}>Choose Background Color:</Text>
+          <View style={styles.selectColorContainer}>
+            <TouchableOpacity
+              style=
+              {[
+                styles.selectColor,
+                { backgroundColor: '#090C08' },
+                background === '#090C08' && styles.selectedColor
+              ]}
+              onPress={() => setBackground('#090C08')}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style=
+              {[
+                styles.selectColor,
+                { backgroundColor: '#474056' },
+                background === '#474056' && styles.selectedColor
+              ]}
+              onPress={() => setBackground('#474056')}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style=
+              {[
+                styles.selectColor,
+                { backgroundColor: '#8A95A5' },
+                background === '#8A95A5' && styles.selectedColor
+              ]}
+              onPress={() => setBackground('#8A95A5')}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style=
+              {[
+                styles.selectColor,
+                { backgroundColor: '#B9C6AE' },
+                background === '#B9C6AE' && styles.selectedColor
+              ]}
+              onPress={() => setBackground('#B9C6AE')}>
+            </TouchableOpacity>
+          </View>
         </View>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Chat', { name: name })}>
           <Text style={styles.buttonText}>Start Chatting</Text>
         </TouchableOpacity>
-
       </View>
     </ImageBackground>
 
@@ -90,19 +128,35 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#FFFFFF",
   },
-  selectColorContainer: {
+  chooseBackgroundContainer: {
     width: '88%',
     alignItems: 'left',
     alignSelf: 'flex-start',
     padding: 15
   },
-  selectColorText: {
+  chooseBackgroundText: {
     fontSize: 16,
     fontWeight: "300",
     color: '#757083',
     opacity: 1.0,
     alignItems: 'flex-start',
     marginBottom: 15
+  },
+  selectColorContainer: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start'
+  },
+  selectColor: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    border: 3,
+    marginRight: 20,
+    borderColor: 'white'
+  },
+  selectedColor: {
+    borderColor: '#9B30FF',
+    borderWidth: 3
   }
 });
 
