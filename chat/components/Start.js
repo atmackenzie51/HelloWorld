@@ -1,28 +1,33 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button, TextInput, ImageBackground } from 'react-native';
+import backgroundImage from '../assets/background-image.png';
+
 
 const Start = ({ navigation }) => {
   const [name, setName] = useState('');
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../img/background-image.png')}
-        resizeMode="cover"
-        style={styles.imageBackground}
-      />
-      <Text>Hello!</Text>
-      <TextInput
-        style={styles.textInput}
-        value={name}
-        onChangeText={setName}
-        placeholder='Set your username here!'
-      />
-      <Button
-        title="Go to Chat Screen"
-        onPress={() => navigation.navigate('Chat', { name: name })}
-      />
-    </View>
+
+    <ImageBackground
+      source={backgroundImage}
+      resizeMode="cover"
+      style={styles.imageBackground}
+    >
+      <View style={styles.container}>
+        <Text>Hello!</Text>
+        <TextInput
+          style={styles.textInput}
+          value={name}
+          onChangeText={setName}
+          placeholder='Set your username here!'
+        />
+        <Button
+          title="Go to Chat Screen"
+          onPress={() => navigation.navigate('Chat', { name: name })}
+        />
+      </View>
+    </ImageBackground>
+
   );
 }
 
