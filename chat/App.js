@@ -31,26 +31,4 @@ const App = () => {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    backgroundColor: 'blue',
-  },
-  blue: {
-    color: 'blue',
-    fontWeight: '600',
-  },
-  bigRed: {
-    color: 'red',
-    fontSize: 30,
-  },
-});
-
 export default App;
