@@ -29,6 +29,9 @@ const Start = ({ navigation }) => {
           onChangeText={setName}
           placeholder='Your Name'
         />
+        <View style={styles.selectBackgroundContainer}>
+          <Text style={styles.selectBackgroundText}>Choose Background Color:</Text>
+        </View>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('Chat', { name: name })}>
@@ -86,6 +89,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     color: "#FFFFFF",
+  },
+  selectBackgroundText: {
+    fontSize: 16,
+    fontWeight: "300",
+    color: '#757083',
+    opacity: 1.0,
+    textAlign: 'left',
+    marginBottom: 15
   }
 });
 
