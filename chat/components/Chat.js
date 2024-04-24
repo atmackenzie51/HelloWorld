@@ -6,10 +6,12 @@ const Chat = ({ route, navigation }) => {
   const { name, background } = route.params;
   const [messages, setMessages] = useState([]);
 
+  //sets the title of the chat to the username typed in the start screen
   useEffect(() => {
     navigation.setOptions({ title: name })
   }, []);
 
+  //sets initial messages for the chat
   useEffect(() => {
     setMessages([
       {
@@ -31,6 +33,7 @@ const Chat = ({ route, navigation }) => {
     ]);
   }, []);
 
+  //allows for UI custimization of the chat bubbles
   const renderBubble = (props) => {
     return <Bubble
       {...props}
@@ -45,6 +48,7 @@ const Chat = ({ route, navigation }) => {
     />
   }
 
+  //appends the old message with the new one
   const onSend = (newMessages) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
   }
