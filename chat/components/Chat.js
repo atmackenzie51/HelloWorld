@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { Platform, StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { useEffect, useState } from 'react';
 import { GiftedChat } from "react-native-gifted-chat";
 
@@ -33,7 +33,15 @@ const Chat = ({ route, navigation }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: background }]}>
-      <Text>Welcome to Chat</Text>
+      <GiftedChat
+        messages={messages}
+        onSend={messages => onSend(messages)}
+        user={{
+          _id: 1
+        }}
+      />
+      {Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null}
+      {Platform.OS === "ios" ? <KeyboardAvoidingView behavior="padding" /> : null}
     </View>
   );
 }
