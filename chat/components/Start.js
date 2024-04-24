@@ -6,6 +6,8 @@ import {
   TextInput,
   ImageBackground,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import backgroundImage from '../assets/background-image.png';
 
@@ -76,6 +78,7 @@ const Start = ({ navigation }) => {
           <Text style={styles.buttonText}>Start Chatting</Text>
         </TouchableOpacity>
       </View>
+      {Platform.OS === "ios" ? <KeyboardAvoidingView behavior="padding" /> : null}
     </ImageBackground>
 
   );
