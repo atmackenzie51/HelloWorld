@@ -31,9 +31,6 @@ const App = () => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  //initialize Firebase storage
-  const storage = getStorage(app)
-
   return (
     <NavigationContainer>
       <Stack.Navigator
