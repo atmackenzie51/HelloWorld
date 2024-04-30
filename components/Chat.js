@@ -4,7 +4,7 @@ import { GiftedChat, Bubble } from "react-native-gifted-chat";
 import { collection, addDoc, onSnapshot, query, where } from "firebase/firestore";
 
 const Chat = ({ route, navigation, db, storage }) => {
-  const { name, background, id } = route.params;
+  const { name, background, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
   //sets the title of the chat to the username typed in the start screen
