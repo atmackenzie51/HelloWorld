@@ -1,9 +1,10 @@
 import { Platform, StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { useEffect, useState } from 'react';
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import { collection, addDoc, onSnapshot, query, where } from "firebase/firestore";
 
-const Chat = ({ route, navigation }) => {
-  const { name, background } = route.params;
+const Chat = ({ route, navigation, db, storage }) => {
+  const { name, background, id } = route.params;
   const [messages, setMessages] = useState([]);
 
   //sets the title of the chat to the username typed in the start screen
@@ -13,24 +14,21 @@ const Chat = ({ route, navigation }) => {
 
   //sets initial messages for the chat
   useEffect(() => {
-    setMessages([
-      {
-        _id: 1,
-        text: 'Hello developer',
-        createdAt: new Date(),
-        user: {
-          _id: 2,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
-      {
-        _id: 2,
-        text: 'This is a system message',
-        createdAt: new Date(),
-        system: true,
-      },
-    ]);
+    const q = query(collection(db, "messages"), orderBy("createdAt", "desc"));
+    const unsubMessages = onSnapshot(q, (docs) => {
+      let newMessages = [];
+      docs.forEach(doc => {
+        newMessages.push({
+          id: doc.id,
+          ...doc.data(),
+          createdAt: new Date(doc.data().createdAt.toMillis())
+        })
+      })
+      setMessages(newMessages);
+    })
+    return () => {
+      if (unsubMessages) unsubMessages();
+    }
   }, []);
 
   //allows for UI custimization of the chat bubbles
@@ -46,12 +44,12 @@ const Chat = ({ route, navigation }) => {
         }
       }}
     />
-  }
+  };
 
   //appends the old message with the new one
   const onSend = (newMessages) => {
-    setMessages(previousMessages => GiftedChat.append(previousMessages, newMessages))
-  }
+    addDoc(collection(db, "messages"), newMessages[0]);
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: background }]}>
