@@ -48,7 +48,6 @@ const App = () => {
           {(props) => (
             <Chat
               db={db}
-              storage={storage}
               {...props}
             />
           )}
