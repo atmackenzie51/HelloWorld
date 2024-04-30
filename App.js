@@ -19,13 +19,14 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const firebaseConfig = {
-    apiKey: "AIzaSyBTjV7GVlEYq3Lh5p6SMlGEK9Yr3lnJARY",
-    authDomain: "chat-bc020.firebaseapp.com",
-    projectId: "chat-bc020",
-    storageBucket: "chat-bc020.appspot.com",
-    messagingSenderId: "1098975711985",
-    appId: "1:1098975711985:web:fca77b82bca2da47a40f50"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
   };
+
 
   //initialize the firebase
   const app = initializeApp(firebaseConfig);
