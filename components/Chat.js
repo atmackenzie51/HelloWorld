@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
 import { collection, addDoc, onSnapshot, query, where } from "firebase/firestore";
 
-const Chat = ({ route, navigation, db, storage }) => {
+const Chat = ({ route, navigation, db }) => {
   const { name, background, userID } = route.params;
   const [messages, setMessages] = useState([]);
 
