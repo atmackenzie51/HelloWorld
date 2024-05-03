@@ -7,7 +7,7 @@ import Start from './components/Start';
 
 //import FireStore
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, disableNetwork, enableNetwork } from "firebase/firestore";
 
 
 //import React Navigation
@@ -21,8 +21,14 @@ import { LogBox, Alert } from 'react-native';
 
 //creating the network connectivity status check
 const connectionStatus = useNetInfo();
+
 useEffect(() => {
-  if (connectionStatus.isConnected === false) Alert.alert("Connection lost!")
+  if (connectionStatus.isConnected === false) {
+    Alert.alert("Connection Lost!");
+    disableNetwork(db);
+  } else if (connectionStatus.isConnected === true) {
+    enableNetwork(db);
+  }
 }, [connectionStatus.isConnected]);
 
 //create the navigator
@@ -57,6 +63,7 @@ const App = () => {
           {(props) => (
             <Chat
               db={db}
+              isConnected={connectionStatus.isConnected}
               {...props}
             />
           )}
