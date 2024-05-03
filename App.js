@@ -14,6 +14,17 @@ import { getFirestore } from "firebase/firestore";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+//import connectivity check
+import { useNetInfo } from '@react-native-community/netinfo';
+import { useEffect } from 'react';
+import { LogBox, Alert } from 'react-native';
+
+//creating the network connectivity status check
+const connectionStatus = useNetInfo();
+useEffect(() => {
+  if (connectionStatus.isConnected === false) Alert.alert("Connection lost!")
+}, [connectionStatus.isConnected]);
+
 //create the navigator
 const Stack = createNativeStackNavigator();
 
