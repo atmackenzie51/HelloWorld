@@ -42,6 +42,7 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     };
   }, [isConnected]);
 
+  //sets cached messages
   const cacheMessages = async (messagesToCache) => {
     try {
       await AsyncStorage.setItem("messages", JSON.stringify(messagesToCache));
@@ -55,10 +56,12 @@ const Chat = ({ route, navigation, db, isConnected }) => {
     setMessages(JSON.parse(cachedMessages));
   };
 
+  //adds new messages to db
   const onSend = (newMessages) => {
     addDoc(collection(db, "messages"), newMessages[0]);
   };
 
+  //checks if online to render the input bar
   const renderInputToolbar = (props) => {
     if (isConnected) return <InputToolbar {...props} />;
     else return null;
