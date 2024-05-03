@@ -33,6 +33,8 @@ const App = () => {
   //initialize the firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  // initialize firebase to store images
+  const storage = getStorage(app);
 
   //creating the network connectivity status check
   const connectionStatus = useNetInfo();
@@ -46,6 +48,7 @@ const App = () => {
     }
   }, [connectionStatus.isConnected]);
 
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Start">
@@ -54,6 +57,7 @@ const App = () => {
           {(props) => (
             <Chat
               db={db}
+              storage={storage}
               isConnected={connectionStatus.isConnected}
               {...props}
             />
