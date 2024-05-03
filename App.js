@@ -30,6 +30,7 @@ useEffect(() => {
     enableNetwork(db);
   }
 }, [connectionStatus.isConnected]);
+LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 //create the navigator
 const Stack = createNativeStackNavigator();
