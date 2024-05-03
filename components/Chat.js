@@ -86,12 +86,12 @@ const Chat = ({ route, navigation, db, isConnected }) => {
       <GiftedChat
         messages={messages}
         renderBubble={renderBubble}
+        renderInputToolbar={renderInputToolbar}
         onSend={messages => onSend(messages)}
         user={{
           _id: userID,
           name: name
         }}
-        renderInputToolbar={renderInputToolbar} // Added renderInputToolbar prop
       />
       {Platform.OS === 'android' ? <KeyboardAvoidingView behavior="height" /> : null}
     </View>

@@ -1,5 +1,6 @@
+import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 
 //import the screens
 import Chat from './components/Chat';
@@ -9,28 +10,12 @@ import Start from './components/Start';
 import { initializeApp } from "firebase/app";
 import { getFirestore, disableNetwork, enableNetwork } from "firebase/firestore";
 
-
 //import React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //import connectivity check
 import { useNetInfo } from '@react-native-community/netinfo';
-import { useEffect } from 'react';
-import { LogBox, Alert } from 'react-native';
-
-//creating the network connectivity status check
-const connectionStatus = useNetInfo();
-
-useEffect(() => {
-  if (connectionStatus.isConnected === false) {
-    Alert.alert("Connection Lost!");
-    disableNetwork(db);
-  } else if (connectionStatus.isConnected === true) {
-    enableNetwork(db);
-  }
-}, [connectionStatus.isConnected]);
-LogBox.ignoreLogs(["AsyncStorage has been extracted from"]);
 
 //create the navigator
 const Stack = createNativeStackNavigator();
@@ -45,22 +30,27 @@ const App = () => {
     appId: "1:1098975711985:web:fca77b82bca2da47a40f50"
   };
 
-
   //initialize the firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  //creating the network connectivity status check
+  const connectionStatus = useNetInfo();
+
+  useEffect(() => {
+    if (connectionStatus.isConnected === false) {
+      Alert.alert("Connection Lost!");
+      disableNetwork(db);
+    } else if (connectionStatus.isConnected === true) {
+      enableNetwork(db);
+    }
+  }, [connectionStatus.isConnected]);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Start"
-      >
-        <Stack.Screen
-          name="Start"
-          component={Start}
-        />
-        <Stack.Screen
-          name="Chat">
+      <Stack.Navigator initialRouteName="Start">
+        <Stack.Screen name="Start" component={Start} />
+        <Stack.Screen name="Chat">
           {(props) => (
             <Chat
               db={db}
