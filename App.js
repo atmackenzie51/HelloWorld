@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 
 //import the screens
 import Chat from './components/Chat';
@@ -22,7 +22,6 @@ const Stack = createNativeStackNavigator();
 
 //creating the firebase storage
 import { getStorage } from "firebase/storage";
-const storage = getStorage(app);
 
 const App = () => {
   const firebaseConfig = {
@@ -37,6 +36,7 @@ const App = () => {
   //initialize the firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+
   // initialize firebase to store images
   const storage = getStorage(app);
 
