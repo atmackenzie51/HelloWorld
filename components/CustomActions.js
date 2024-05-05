@@ -112,8 +112,6 @@ const styles = StyleSheet.create({
     height: 26,
     marginLeft: 10,
     marginBottom: 10,
-    alignItems: 'center', // Align items horizontally
-    justifyContent: 'center' // Align items vertically
   },
   wrapper: {
     borderRadius: 13,
