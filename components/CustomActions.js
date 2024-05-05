@@ -112,6 +112,8 @@ const styles = StyleSheet.create({
     height: 26,
     marginLeft: 10,
     marginBottom: 10,
+    alignItems: 'center', // Align items horizontally
+    justifyContent: 'center' // Align items vertically
   },
   wrapper: {
     borderRadius: 13,
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
   iconText: {
     color: '#b2b2b2',
     fontWeight: 'bold',
-    fontSize: 10,
+    fontSize: 20,
     backgroundColor: 'transparent',
     textAlign: 'center',
   },
