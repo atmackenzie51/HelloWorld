@@ -48,17 +48,17 @@ It operates for iOS and Android devices, leveraging Google Firestore/Firebase fo
 
 ### Utilizing Google Firestore/Firebase
 
-* create an account and a new project
-* obtain the configuration code, and replace it in the App.js file
-* set up the database under build --> Firestore Database
-* activate storage
-* change rules to: 
+* Create an account and a new project
+* Obtain the configuration code, and replace it in the App.js file
+* Set up the database under build --> Firestore Database
+* Activate storage
+* Change rules to: 
 
 `allow read, write: if true`
 
-for database and storage
+For database and storage
 
-* activate anonymous authentication under Rules for both Storage and Project
+* Activate 'anonymous authentication' under Rules for both Storage and Project
 
 ## Installation Procedure
 To get started with the React Native MobileChat application, follow the steps below:
