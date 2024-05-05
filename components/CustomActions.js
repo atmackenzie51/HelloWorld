@@ -4,7 +4,7 @@ import * as Location from 'expo-location';
 import MapView from 'react-native-maps';
 import * as ImagePicker from 'expo-image-picker';
 
-const CustomActions = ({ wrapperStyle, iconTextStyle }) => {
+const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage }) => {
   const actionSheet = useActionSheet();
   const onActionPress = () => {
     const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];

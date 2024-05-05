@@ -84,7 +84,7 @@ const Chat = ({ route, navigation, db, isConnected, storage }) => {
   };
 
   const renderCustomActions = ({ wrapperStyle, iconTextStyle }) => {
-    return <CustomActions {...props} />;
+    return <CustomActions storage={storage} {...props} />;
   };
 
   const renderCustomView = (props) => {

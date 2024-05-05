@@ -20,6 +20,10 @@ import { useNetInfo } from '@react-native-community/netinfo';
 //create the navigator
 const Stack = createNativeStackNavigator();
 
+//creating the firebase storage
+import { getStorage } from "firebase/storage";
+const storage = getStorage(app);
+
 const App = () => {
   const firebaseConfig = {
     apiKey: "AIzaSyBTjV7GVlEYq3Lh5p6SMlGEK9Yr3lnJARY",
