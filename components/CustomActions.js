@@ -43,8 +43,27 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
       const imageURL = await getDownloadURL(snapshot.ref)
       onSend({ image: imageURL })
     });
-  }
+  };
 
+  const pickImage = async () => {
+    let permissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (permissions?.granted) {
+      let result = await ImagePicker.launchImageLibraryAsync();
+      if (!result.canceled) await uploadAndSendImage(result.assets[0].uri);
+      else Alert.alert("Permissions haven't been granted")
+    }
+  };
+
+  const takePhoto = async () => {
+    let permissions = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissions?.granted) {
+      let result = await ImagePicker.launchCameraAsync();
+      if (!result.canceled) await uploadAndSendImage(result.assets[0].uri);
+      else Alert.alert("Permissions haven't been granted")
+    }
+  };
+
+  //opens menu to take photo, select photo or share location
   const onActionPress = () => {
     const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
     const cancelButtonIndex = options.length - 1;
@@ -72,9 +91,16 @@ const CustomActions = ({ wrapperStyle, iconTextStyle, onSend, storage, userID })
 
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onActionPress}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onActionPress}
+      accessible={true}
+      accessibilityLabel="more options"
+      accessibilityHint="can send an image or location to the chat">
       <View style={[styles.wrapper, wrapperStyle]}>
-        <Text style={[styles.iconText, iconTextStyle]}>+</Text>
+        <Text style={[styles.iconText, iconTextStyle]}>
+          +
+        </Text>
       </View>
     </TouchableOpacity>
   );
